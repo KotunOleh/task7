@@ -1,6 +1,19 @@
 #include <iostream>
 #include <vector>
 #include <random>
+#include <string> 
+
+class Cell {
+private:
+	long long x;
+	long long y;
+public:
+	Cell(long long x_value, long long y_value) :
+		x(x_value), y(y_value) {}
+	std::string toString() const {
+		return std::to_string(x) + " " + std::to_string(y);
+	}
+};
 
 class RandomController {
 private:
