@@ -27,6 +27,12 @@ public:
 		engine(r()){}
 };
 
+long long inputInt() {
+	long long a;
+	std::cin >> a;
+	if (std::cin.fail()) throw std::runtime_error("\nYou entered something that is NOT integer!");
+	return a;
+}
 
 
 int main() {
