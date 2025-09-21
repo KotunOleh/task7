@@ -25,6 +25,13 @@ public:
 	RandomController(int N) :
 		boardSide(N),
 		engine(r()){}
+
+	Cell operator()() {
+		std::uniform_int_distribution<long long> dist(0, boardSide - 1);
+		long long x = dist(engine);
+		long long y = dist(engine);
+		return Cell(x, y);
+	}
 };
 
 
