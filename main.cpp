@@ -3,6 +3,13 @@
 #include <random>
 #include <string> 
 
+long long inputInt() {
+	long long a;
+	std::cin >> a;
+	if (std::cin.fail()) throw std::runtime_error("\nYou entered something that is NOT integer!");
+	return a;
+}
+
 class Cell {
 private:
 	long long x;
@@ -37,5 +44,30 @@ public:
 
 
 int main() {
-	std::cout << "init";
+	try {
+		long long N;
+		long long m;
+
+		std::cout << "Enter the size of square`s (N x N) side: ";
+		N = inputInt();
+		if (N <= 0) throw std::domain_error("\nEntered number must be greater than 0!");
+
+		std::cout << "Enter the amount of cells that you want to pick from board (m): ";
+		m = inputInt();
+		if (m <= 0) throw std::domain_error("\nEntered number must be greater than 0!");
+		if (m > N * N) throw std::domain_error("\nYou have to choose number of cells that is less than the whole amount of cells on the board!");
+
+
+		RandomController controller(N);
+
+		for (long long i = 0; i <= m; i++) {
+			std::cout << controller().toString();
+		}
+	}
+
+	catch (const std::exception& e) {
+		std::cerr << "\n***** error";
+		std::cerr << e.what();
+	}
+	return 0;
 }
