@@ -61,7 +61,7 @@ int main() {
 		RandomController controller(N);
 
 		for (long long i = 0; i <= m; i++) {
-			std::cout << controller().toString();
+			std::cout << controller().toString() << "\n";
 		}
 	}
 
