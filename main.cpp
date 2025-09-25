@@ -2,12 +2,16 @@
 #include <vector>
 #include <random>
 #include <string> 
+#include <map> 
 
 long long inputInt() {
 	long long a;
 	std::cin >> a;
 	if (std::cin.fail()) throw std::runtime_error("\nYou entered something that is NOT integer!");
 	return a;
+}
+void updateMap(std::map<std::string, long long>& map, const std::string& key) {
+  	map[key]++;
 }
 
 class Cell {
@@ -58,9 +62,11 @@ int main() {
 
 		RandomController controller(N);
 
-		for (long long i = 0; i <= m; i++) {
-			std::cout << controller().toString() << "\n";
-		}
+		std::map<std::string, long long> krat_map; 
+
+    	for (long long i = 0; i < m; i++) {
+      		updateMap(krat_map, controller().toString());
+    	}
 	}
 
 	catch (const std::exception& e) {
