@@ -10,6 +10,14 @@ long long inputInt() {
 	if (std::cin.fail()) throw std::runtime_error("\nYou entered something that is NOT integer!");
 	return a;
 }
+
+void displayCellFrequencies(std::map<std::string, long long>& map) {
+  std::cout << "\n ### Frequency of each cell ###\n";
+    for (const auto& pair : map) {
+        std::cout << "Cell [" << pair.first << "]: " << pair.second << " times\n";
+      }
+}
+
 void updateMap(std::map<std::string, long long>& map, const std::string& key) {
   	map[key]++;
 }
@@ -67,6 +75,10 @@ int main() {
     	for (long long i = 0; i < m; i++) {
       		updateMap(krat_map, controller().toString());
     	}
+
+		displayCellFrequencies(krat_map);
+
+		
 	}
 
 	catch (const std::exception& e) {
