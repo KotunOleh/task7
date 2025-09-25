@@ -1,3 +1,5 @@
+// The authors of this program are Oleh Kotun and Oles` Legkiy
+
 #include <iostream>
 #include <vector>
 #include <random>
@@ -88,8 +90,11 @@ int main() {
 	catch (const std::exception& e) {
 		std::cerr << "\n***** error";
 		std::cerr << e.what();
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
 
+	std::cout << "\nPress Enter to exit..."; 
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 	std::cin.get();
 
