@@ -28,21 +28,21 @@ public:
 
 class RandomController {
 private:
-	long long boardSide;
-	std::random_device r;
-	std::mt19937 engine;
-	std::uniform_int_distribution<long long> distribution;
+  long long boardSide;
+  std::random_device r;
+  std::mt19937 engine;
+  std::uniform_int_distribution<long long> distribution;
 public:
-	RandomController(int N) :
-		boardSide(N),
-		engine(r()){}
+  RandomController(long long N) :
+    boardSide(N),
+    engine(r()),
+    distribution(0, N-1){}
 
-	Cell operator()() {
-		std::uniform_int_distribution<long long> dist(0, boardSide - 1);
-		long long x = dist(engine);
-		long long y = dist(engine);
-		return Cell(x, y);
-	}
+  Cell operator()() {
+    long long x = distribution(engine);
+    long long y = distribution(engine);
+    return Cell(x, y);
+  }
 };
 
 
