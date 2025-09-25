@@ -22,6 +22,10 @@ void updateMap(std::map<std::string, long long>& map, const std::string& key) {
   	map[key]++;
 }
 
+double average(std::map<std::string, long long>& map, const  long long sum) {
+  return sum * 1.0 / map.size();
+}
+
 class Cell {
 private:
 	long long x;
@@ -78,7 +82,7 @@ int main() {
 
 		displayCellFrequencies(krat_map);
 
-		
+		std::cout << "\nAverage frequency is " << average(krat_map, m);
 	}
 
 	catch (const std::exception& e) {
