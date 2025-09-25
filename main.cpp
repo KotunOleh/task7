@@ -55,8 +55,6 @@ int main() {
 		std::cout << "Enter the amount of cells that you want to pick from board (m): ";
 		m = inputInt();
 		if (m <= 0) throw std::domain_error("\nEntered number must be greater than 0!");
-		if (m > N * N) throw std::domain_error("\nYou have to choose number of cells that is less than the whole amount of cells on the board!");
-
 
 		RandomController controller(N);
 
@@ -69,5 +67,9 @@ int main() {
 		std::cerr << "\n***** error";
 		std::cerr << e.what();
 	}
+
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+	std::cin.get();
+
 	return 0;
 }
