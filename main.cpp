@@ -1,4 +1,4 @@
-// The authors of this program are Oleh Kotun and Oles` Legkiy
+// The authors of this program are Oleh Kotun and Oles Legkiy
 
 #include <iostream>
 #include <vector>
@@ -6,6 +6,15 @@
 #include <string> 
 #include <map> 
 
+struct Cell{
+	long long x;
+	long long y;
+
+	bool operator<(const Cell& other) const {
+		if (x != other.x) return x < other.x;
+		return y < other.y;
+	}
+};
 long long inputInt() {
 	long long a;
 	std::cin >> a;
@@ -13,53 +22,34 @@ long long inputInt() {
 	return a;
 }
 
-void displayCellFrequencies(std::map<std::string, long long>& map) {
+void displayCellFrequencies(const std::map<Cell, long long>& map) {
   std::cout << "\n ### Frequency of each cell ###\n";
     for (const auto& pair : map) {
-        std::cout << "Cell [" << pair.first << "]: " << pair.second << " times\n";
+        std::cout << "Cell [" << pair.first.x << " " << pair.first.y << "]: " << pair.second << " times\n";
       }
 }
 
-void updateMap(std::map<std::string, long long>& map, const std::string& key) {
-  	map[key]++;
+double average(const std::map<Cell, long long>& map, const  long long sum) {
+	if (map.empty()) return 0.0;
+  	return static_cast<double>(sum) / map.size();
 }
 
-double average(std::map<std::string, long long>& map, const  long long sum) {
-  return sum * 1.0 / map.size();
-}
-
-class Cell {
-private:
-	long long x;
-	long long y;
-public:
-	Cell(long long x_value, long long y_value) :
-		x(x_value), y(y_value) {}
-	std::string toString() const {
-		return std::to_string(x) + " " + std::to_string(y);
-	}
-};
 
 class RandomController {
 private:
-  long long boardSide;
-  std::random_device r;
   std::mt19937 engine;
   std::uniform_int_distribution<long long> distribution;
 public:
   RandomController(long long N) :
-    boardSide(N),
-    engine(r()),
+    engine(std::random_device{}()),
     distribution(0, N-1){}
 
   Cell operator()() {
     long long x = distribution(engine);
     long long y = distribution(engine);
-    return Cell(x, y);
+    return {x, y};
   }
 };
-
-
 
 int main() {
 	try {
@@ -76,15 +66,15 @@ int main() {
 
 		RandomController controller(N);
 
-		std::map<std::string, long long> krat_map; 
+		std::map<Cell, long long> freqMap; 
 
     	for (long long i = 0; i < m; i++) {
-      		updateMap(krat_map, controller().toString());
+			freqMap[controller()]++;
     	}
 
-		displayCellFrequencies(krat_map);
+		displayCellFrequencies(freqMap);
 
-		std::cout << "\nAverage frequency is " << average(krat_map, m);
+		std::cout << "\nAverage frequency is " << average(freqMap, m);
 	}
 
 	catch (const std::exception& e) {
