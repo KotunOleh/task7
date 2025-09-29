@@ -28,7 +28,9 @@ int main() {
         }
 
         displayCellFrequencies(freqMap);
-        std::cout << "\nAverage frequency is " << average(freqMap, m);
+        std::cout << "\nAverage frequency is " << averageFrequency(freqMap, m);
+
+        std::cout << "\nMeadian frequency is " << medianFrequency(freqMap);
 
     } catch (const std::exception& e) {
         std::cerr << "\n***** error: " << e.what();
