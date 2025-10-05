@@ -9,6 +9,7 @@
 #include "tools.h"
 
 int main() {
+    std::cout << "The authors of this program are Oleh Kotun and Oles Lehkiy. Compiler: MSVC";
     try {
         long long N;
         long long m;
