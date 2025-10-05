@@ -7,4 +7,6 @@
 long long inputInt();
 void displayCellFrequencies(const std::map<Cell, long long>& map);
 double averageFrequency(const std::map<Cell, long long>& map, const long long sum);
+double expectedFrequency(const long long sum, const long long N);
+double standartDeviation(const std::map<Cell, long long>& map, const double expected_freq);
 double medianFrequency(const std::map<Cell, long long>& map);

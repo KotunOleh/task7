@@ -28,9 +28,19 @@ int main() {
         }
 
         displayCellFrequencies(freqMap);
-        std::cout << "\nAverage frequency is " << averageFrequency(freqMap, m);
+        double avg_freq = averageFrequency(freqMap, m);
+        std::cout << "\nAverage frequency is " << avg_freq;
 
-        std::cout << "\nMeadian frequency is " << medianFrequency(freqMap);
+        double med_freq = medianFrequency(freqMap);
+        std::cout << "\nMeadian frequency is " << med_freq;
+
+        double exp_freq = expectedFrequency(m, N);
+        std::cout << "\nExpected frequency per cell according to amount of picked cells is " << exp_freq;
+
+        double stand_dev = standartDeviation(freqMap, exp_freq);
+        std::cout << "\nstandart deviation is " << stand_dev;
+
+
 
     } catch (const std::exception& e) {
         std::cerr << "\n***** error: " << e.what();
