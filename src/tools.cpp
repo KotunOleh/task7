@@ -36,6 +36,7 @@ double expectedFrequency(const long long sum, const long long N) {
 }
 
 double standartDeviation(const std::map<Cell, long long>& map, const double expected_freq) {
+    if (map.empty() or expected_freq == 0) throw std::domain_error("\nUnable to analyze");
     std::vector<long long> frequencies;
     frequencies.reserve(map.size());
     for (const auto& pair : map) {
@@ -49,6 +50,11 @@ double standartDeviation(const std::map<Cell, long long>& map, const double expe
     }
     double variance = diff_sum / frequencies.size();
     return std::sqrt(variance);
+}
+
+double deviationPercent(const double expected_freq, const double standart_dev) {
+    if (expected_freq == 0 or standart_dev == 0) throw std::domain_error("\nUnable to analyze");
+    return (standart_dev / expected_freq) * 100;
 }
 
 double medianFrequency(const std::map<Cell, long long>& map) {

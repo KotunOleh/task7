@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <limits>
 #include <map>
+#include <iomanip>
 
 #include "cell.h"
 #include "randomcontroller.h"
@@ -38,7 +39,10 @@ int main() {
         std::cout << "\nExpected frequency per cell according to amount of picked cells is " << exp_freq;
 
         double stand_dev = standartDeviation(freqMap, exp_freq);
-        std::cout << "\nstandart deviation is " << stand_dev;
+        std::cout << "\nStandart deviation is " << stand_dev;
+
+        double dev_percent = deviationPercent(exp_freq, stand_dev);
+        std::cout << "\nStandart deviation is " << std::fixed << std::setprecision(2) << dev_percent << " percent of expected frequency (" << exp_freq << ")";
 
 
 
