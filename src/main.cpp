@@ -1,3 +1,5 @@
+//Compiler: MSVC
+//The authors of this program are Oleh Kotun and Oles Lehkiy.
 #include <iostream>
 #include <stdexcept>
 #include <limits>
@@ -9,7 +11,6 @@
 #include "tools.h"
 
 int main() {
-    std::cout << "The authors of this program are Oleh Kotun and Oles Lehkiy. Compiler: MSVC";
     try {
         long long N;
         long long m;
@@ -45,14 +46,11 @@ int main() {
         double dev_percent = deviationPercent(exp_freq, stand_dev);
         std::cout << "\nStandart deviation is " << std::fixed << std::setprecision(2) << dev_percent << " percent of expected frequency (" << exp_freq << ")";
 
-
-
     } catch (const std::exception& e) {
         std::cerr << "\n***** error: " << e.what();
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
-
     std::cout << "\nPress Enter to exit...";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();
