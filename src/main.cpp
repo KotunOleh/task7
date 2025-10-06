@@ -30,7 +30,6 @@ int main() {
             freqMap[controller()]++;
         }
 
-        displayCellFrequencies(freqMap);
         double avg_freq = averageFrequency(freqMap, m);
         std::cout << "\nAverage frequency is " << avg_freq;
 

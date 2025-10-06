@@ -13,13 +13,6 @@ long long inputInt() {
     return a;
 }
 
-void displayCellFrequencies(const std::map<Cell, long long>& map) {
-    std::cout << "\n ### Frequency of each cell ###\n";
-    for (const auto& pair : map) {
-        std::cout << "Cell [" << pair.first.x << " " << pair.first.y << "]: " << pair.second << " times\n";
-    }
-}
-
 double averageFrequency(const std::map<Cell, long long>& map, const long long sum) {
     if (map.empty()) {
         return 0.0;
